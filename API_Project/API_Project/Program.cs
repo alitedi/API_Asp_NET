@@ -7,6 +7,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// CORS policies Defining 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AlowAll",
+        b => b.AllowAnyHeader()
+        .AllowAnyOrigin()
+        .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -17,6 +26,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// CORS Config : Cross Origin Resource Sharing (accessible from outside )
+app.UseCors("AlowAll");
 
 app.UseAuthorization();
 
