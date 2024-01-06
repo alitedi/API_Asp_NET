@@ -30,6 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// auto loging by serilog 
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
